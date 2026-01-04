@@ -7,12 +7,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = DamageCorrectionMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    private static final List<String> defaultBoss = List.of("minecraft:ender_dragon", "minecraft:wither", "minecraft:elder_guardian", "minecraft:warden");
 
     private static final ForgeConfigSpec.BooleanValue ENABLED = BUILDER
             .comment("是否启用伤害修正？")
@@ -27,8 +27,8 @@ public class Config {
             .define("excludeBoss", true);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> BOSS_STRINGS = BUILDER
-            .comment("在原版的基础上，自定义boss. 举例 minecraft:ender_dragon")
-            .defineListAllowEmpty("bosses", new ArrayList<>(), Config::validateBossName);
+            .comment("自定义boss.")
+            .defineListAllowEmpty("bosses", defaultBoss, Config::validateBossName);
 
     private static final ForgeConfigSpec.BooleanValue EXCLUDE_PLAYER = BUILDER
             .comment("是否对玩家启用？")

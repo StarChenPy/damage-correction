@@ -3,7 +3,6 @@ package com.starchenpy.damagecorrection.event;
 import com.starchenpy.damagecorrection.Config;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,15 +18,14 @@ public class OnHurtListener {
             return;
         }
 
-        boolean targetIsPlayer = event.getEntity() instanceof Player;
-        boolean sourceIsPlayer = event.getSource().getEntity() instanceof Player;
-
         // 判定是否对非玩家造成的伤害触发效果
+        boolean sourceIsPlayer = event.getSource().getEntity() instanceof Player;
         if (Config.onlyPlayerDamage && !sourceIsPlayer) {
             return;
         }
 
         // 判定能否对玩家触发效果
+        boolean targetIsPlayer = event.getEntity() instanceof Player;
         if (!Config.excludePlayer && targetIsPlayer) {
             return;
         }
@@ -46,16 +44,6 @@ public class OnHurtListener {
     }
 
     public static boolean isBoss(Entity entity) {
-        // 原版 Boss 类型
-        EntityType<?> type = entity.getType();
-        if (type == EntityType.ENDER_DRAGON ||
-                type == EntityType.WITHER ||
-                type == EntityType.ELDER_GUARDIAN ||
-                type == EntityType.WARDEN) {
-            return true;
-        }
-
-        // 额外 Boss 类型
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
         if (id != null) {
             return Config.bossStrings.contains(id.toString());
