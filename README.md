@@ -54,6 +54,26 @@ healthBefore - finalDamage <= finalDamage * k
 
 👉 不触发，正常造成伤害
 
+## 可配置项
+
+以下参数可在 config 文件夹下的 damage_correction-common.toml 中修改
+
+```toml
+#是否启用伤害修正？
+enabled = true
+#伤害修正阈值.
+#Range: 0.0 ~ 10.0
+thresholdRatio = 0.5
+#是否对Boss启用？
+excludeBoss = true
+#自定义boss.
+bosses = ["minecraft:ender_dragon", "minecraft:wither", "minecraft:elder_guardian", "minecraft:warden"]
+#是否对玩家启用？
+excludePlayer = false
+#是否只有玩家可以触发伤害修正？
+onlyPlayerDamage = true
+```
+
 ## 许可证
 
 遵循 MIT 开源协议，请随意使用😊
