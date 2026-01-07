@@ -54,7 +54,7 @@ public class Config {
     public static boolean enabled;
     public static double thresholdRatio;
     public static boolean applyToBoss;
-    public static int boss_hp_threshold;
+    public static int bossHpThreshold;
     public static Set<? extends String> bossStrings;
     public static boolean applyToPlayer;
     public static boolean onlyPlayerDamage;
@@ -64,7 +64,7 @@ public class Config {
         enabled = ENABLED.get();
         thresholdRatio = THRESHOLD_RATIO.get();
         applyToBoss = APPLY_TO_BOSS.get();
-        boss_hp_threshold = BOSS_HP_THRESHOLD.get();
+        bossHpThreshold = BOSS_HP_THRESHOLD.get();
         bossStrings = new HashSet<>(BOSS_STRINGS.get());
         applyToPlayer = APPLY_TO_PLAYER.get();
         onlyPlayerDamage = ONLY_PLAYER_DAMAGE.get();
@@ -74,7 +74,7 @@ public class Config {
         ENABLED.set(enabled);
         THRESHOLD_RATIO.set(thresholdRatio);
         APPLY_TO_BOSS.set(applyToBoss);
-        BOSS_HP_THRESHOLD.set(boss_hp_threshold);
+        BOSS_HP_THRESHOLD.set(bossHpThreshold);
         BOSS_STRINGS.set(new ArrayList<>(bossStrings));
         APPLY_TO_PLAYER.set(applyToPlayer);
         ONLY_PLAYER_DAMAGE.set(onlyPlayerDamage);

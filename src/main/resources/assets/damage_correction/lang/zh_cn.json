@@ -1,0 +1,10 @@
+{
+  "screen.title.damage_correction.config": "伤害修正 Mod 配置页面",
+  "screen.title.damage_correction.enable": "启用伤害修正",
+  "screen.title.damage_correction.apply_to_boss": "对 Boss 触发",
+  "screen.title.damage_correction.apply_to_player": "对玩家触发",
+  "screen.title.damage_correction.only_player_damage": "仅能由玩家触发",
+  "screen.title.damage_correction.threshold_ratio": "阈值比例",
+  "screen.title.damage_correction.boss_hp_threshold": "Boss 血量阈值（0时关闭）",
+  "screen.title.damage_correction.boss_list": "自定义 Boss 列表"
+}

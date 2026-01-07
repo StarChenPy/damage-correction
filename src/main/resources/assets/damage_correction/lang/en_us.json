@@ -1,3 +1,10 @@
 {
-  "screen.title.damage_correction.config": "Damage Correction Mod Config"
+  "screen.title.damage_correction.config": "Damage Correction Mod Configuration",
+  "screen.title.damage_correction.enable": "Enable",
+  "screen.title.damage_correction.apply_to_boss": "Apply to Bosses",
+  "screen.title.damage_correction.apply_to_player": "Apply to Players",
+  "screen.title.damage_correction.only_player_damage": "Triggered Only by Player Damage",
+  "screen.title.damage_correction.threshold_ratio": "Threshold Ratio",
+  "screen.title.damage_correction.boss_hp_threshold": "Boss Health Threshold (0 to Disable)",
+  "screen.title.damage_correction.boss_list": "Custom Boss List"
 }

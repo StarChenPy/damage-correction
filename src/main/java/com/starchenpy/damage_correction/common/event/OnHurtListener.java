@@ -57,8 +57,8 @@ public class OnHurtListener {
             return true;
         }
 
-        if (Config.boss_hp_threshold != 0) {
-            return entity.getMaxHealth() >= Config.boss_hp_threshold;
+        if (Config.bossHpThreshold != 0) {
+            return entity.getMaxHealth() >= Config.bossHpThreshold;
         }
 
         return false;

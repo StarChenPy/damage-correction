@@ -1,0 +1,10 @@
+{
+  "screen.title.damage_correction.config": "ダメージ補正 Mod 設定画面",
+  "screen.title.damage_correction.enable": "ダメージ補正を有効化",
+  "screen.title.damage_correction.apply_to_boss": "ボスに適用",
+  "screen.title.damage_correction.apply_to_player": "プレイヤーに適用",
+  "screen.title.damage_correction.only_player_damage": "プレイヤーの攻撃のみ有効",
+  "screen.title.damage_correction.threshold_ratio": "しきい値の比率",
+  "screen.title.damage_correction.boss_hp_threshold": "ボスの体力しきい値（0 で無効）",
+  "screen.title.damage_correction.boss_list": "カスタムボス一覧"
+}

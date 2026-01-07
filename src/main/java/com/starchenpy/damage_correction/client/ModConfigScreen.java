@@ -38,31 +38,37 @@ public class ModConfigScreen extends Screen {
     protected void init() {
         int centerX = this.width / 2;
         int x = PADDING;
-        int y = PADDING;
+        int y = PADDING * 2 + 9;;
         int spacing = WIDGET_HEIGHT + PADDING * 2;
         int width = 120;
 
+        // 标题
+        StringWidget titleString = new StringWidget(title, this.font);
+        titleString.setX(centerX - this.font.width(title.getVisualOrderText()) / 2);
+        titleString.setY(PADDING);
+        this.addRenderableWidget(titleString);
+
         // 开关区
-        enabled = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("启用伤害修正"), Config.enabled);
+        enabled = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.translatable("screen.title.damage_correction.enable"), Config.enabled);
         this.addRenderableWidget(enabled);
         y += spacing;
 
-        applyToBoss = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("对 Boss 触发"), Config.applyToBoss);
+        applyToBoss = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.translatable("screen.title.damage_correction.apply_to_boss"), Config.applyToBoss);
         this.addRenderableWidget(applyToBoss);
         y += spacing;
 
-        applyToPlayer = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("对玩家触发"), Config.applyToPlayer);
+        applyToPlayer = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.translatable("screen.title.damage_correction.apply_to_player"), Config.applyToPlayer);
         this.addRenderableWidget(applyToPlayer);
         y += spacing;
 
-        onlyPlayerDamage = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("仅能由玩家触发"), Config.onlyPlayerDamage);
+        onlyPlayerDamage = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.translatable("screen.title.damage_correction.only_player_damage"), Config.onlyPlayerDamage);
         this.addRenderableWidget(onlyPlayerDamage);
 
         // 输入区
         x = width + PADDING * 2;
-        y = PADDING;
+        y = PADDING * 2 + 9;
 
-        StringWidget thresholdRatioString = new StringWidget(Component.literal("阈值比例"), this.font);
+        StringWidget thresholdRatioString = new StringWidget(Component.translatable("screen.title.damage_correction.threshold_ratio"), this.font);
         thresholdRatioString.setX(x);
         thresholdRatioString.setY(y);
         this.addRenderableWidget(thresholdRatioString);
@@ -74,23 +80,23 @@ public class ModConfigScreen extends Screen {
         this.addRenderableWidget(thresholdRatio);
         y += spacing;
 
-        StringWidget bossHpThresholdString = new StringWidget(Component.literal("Boss 血量阈值（0时关闭）"), this.font);
+        StringWidget bossHpThresholdString = new StringWidget(Component.translatable("screen.title.damage_correction.boss_hp_threshold"), this.font);
         bossHpThresholdString.setX(x);
         bossHpThresholdString.setY(y);
         this.addRenderableWidget(bossHpThresholdString);
         y += PADDING * 2;
 
         bossHpThreshold = new EditBox(this.font, x, y, width, WIDGET_HEIGHT, Component.empty());
-        bossHpThreshold.setValue(String.valueOf(Config.boss_hp_threshold));
+        bossHpThreshold.setValue(String.valueOf(Config.bossHpThreshold));
         bossHpThreshold.setFilter(s -> s.matches("\\d*"));
         this.addRenderableWidget(bossHpThreshold);
 
         // Boss 列表
         width = this.width / 3;
         x = this.width - width - PADDING;
-        y = PADDING;
+        y = PADDING * 2 + 9;
 
-        StringWidget bossListString = new StringWidget(Component.literal("自定义 Boss 列表"), this.font);
+        StringWidget bossListString = new StringWidget(Component.translatable("screen.title.damage_correction.boss_list"), this.font);
         bossListString.setX(x);
         bossListString.setY(y);
         this.addRenderableWidget(bossListString);
@@ -130,7 +136,7 @@ public class ModConfigScreen extends Screen {
         } catch (NumberFormatException ignored) {}
 
         try {
-            Config.boss_hp_threshold = Integer.parseInt(bossHpThreshold.getValue());
+            Config.bossHpThreshold = Integer.parseInt(bossHpThreshold.getValue());
         } catch (NumberFormatException ignored) {}
 
         Config.bossStrings = Arrays.stream(bossList.getValue().split("\n"))
