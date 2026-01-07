@@ -1,8 +1,8 @@
-package com.starchenpy.damagecorrection.event;
+package com.starchenpy.damage_correction.common.event;
 
-import com.starchenpy.damagecorrection.Config;
+import com.starchenpy.damage_correction.Config;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -43,12 +43,14 @@ public class OnHurtListener {
         }
     }
 
-    public static boolean isBoss(Entity entity) {
+    public static boolean isBoss(LivingEntity entity) {
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
         if (id != null) {
-            return Config.bossStrings.contains(id.toString());
+            if (Config.bossStrings.contains(id.toString())) {
+                return true;
+            }
         }
 
-        return false;
+        return entity.getMaxHealth() > Config.boss_hp_threshold;
     }
 }

@@ -1,4 +1,4 @@
-package com.starchenpy.damagecorrection;
+package com.starchenpy.damage_correction;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -15,27 +15,31 @@ public class Config {
     private static final List<String> defaultBoss = List.of("minecraft:ender_dragon", "minecraft:wither", "minecraft:elder_guardian", "minecraft:warden");
 
     private static final ForgeConfigSpec.BooleanValue ENABLED = BUILDER
-            .comment("是否启用伤害修正？")
+            .comment("Enable damage correction?")
             .define("enabled", true);
 
     private static final ForgeConfigSpec.DoubleValue THRESHOLD_RATIO = BUILDER
-            .comment("伤害修正阈值.")
+            .comment("Damage correction threshold ratio.")
             .defineInRange("thresholdRatio", 0.5, 0, 10);
 
     private static final ForgeConfigSpec.BooleanValue EXCLUDE_BOSS = BUILDER
-            .comment("是否对Boss启用？")
+            .comment("Apply to bosses?")
             .define("excludeBoss", true);
 
+    private static final ForgeConfigSpec.IntValue BOSS_HP_THRESHOLD = BUILDER
+            .comment("Boss HP threshold. Entities with HP above this value are considered bosses. Works together with custom boss settings.")
+            .defineInRange("boss_hp_threshold", 200, 0, Integer.MAX_VALUE);
+
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> BOSS_STRINGS = BUILDER
-            .comment("自定义boss.")
+            .comment("Custom boss entity identifiers.")
             .defineListAllowEmpty("bosses", defaultBoss, Config::validateBossName);
 
     private static final ForgeConfigSpec.BooleanValue EXCLUDE_PLAYER = BUILDER
-            .comment("是否对玩家启用？")
+            .comment("Apply to players?")
             .define("excludePlayer", false);
 
     private static final ForgeConfigSpec.BooleanValue ONLY_PLAYER_DAMAGE = BUILDER
-            .comment("是否只有玩家可以触发伤害修正？")
+            .comment("Only allow damage correction to be triggered by players?")
             .define("onlyPlayerDamage", true);
 
     private static boolean validateBossName(final Object obj) {
@@ -47,6 +51,7 @@ public class Config {
     public static boolean enabled;
     public static double thresholdRatio;
     public static boolean excludeBoss;
+    public static int boss_hp_threshold;
     public static List<? extends String> bossStrings;
     public static boolean excludePlayer;
     public static boolean onlyPlayerDamage;
@@ -56,8 +61,21 @@ public class Config {
         enabled = ENABLED.get();
         thresholdRatio = THRESHOLD_RATIO.get();
         excludeBoss = EXCLUDE_BOSS.get();
+        boss_hp_threshold = BOSS_HP_THRESHOLD.get();
         bossStrings = BOSS_STRINGS.get();
         excludePlayer = EXCLUDE_PLAYER.get();
         onlyPlayerDamage = ONLY_PLAYER_DAMAGE.get();
+    }
+
+    public static void save() {
+        ENABLED.set(enabled);
+        THRESHOLD_RATIO.set(thresholdRatio);
+        EXCLUDE_BOSS.set(excludeBoss);
+        BOSS_HP_THRESHOLD.set(boss_hp_threshold);
+        BOSS_STRINGS.set(bossStrings);
+        EXCLUDE_PLAYER.set(excludePlayer);
+        ONLY_PLAYER_DAMAGE.set(onlyPlayerDamage);
+
+        SPEC.save();
     }
 }
