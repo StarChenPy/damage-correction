@@ -136,7 +136,7 @@ public class ModConfigScreen extends Screen {
         Config.bossStrings = Arrays.stream(bossList.getValue().split("\n"))
                 .map(String::trim)
                 .filter(s -> !s.isEmpty())
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
 
         Config.save();
     }

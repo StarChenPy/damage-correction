@@ -14,6 +14,10 @@ public class OnHurtListener {
     // 被攻击时
     @SubscribeEvent
     public static void onHurt(LivingHurtEvent event) {
+        if (event.isCanceled()) {
+            return;
+        }
+
         if (event.getEntity().level().isClientSide()) {
             return;
         }
