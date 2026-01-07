@@ -4,7 +4,7 @@ import com.starchenpy.damage_correction.Config;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,7 +13,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class OnHurtListener {
     // 被攻击时
     @SubscribeEvent
-    public static void onHurt(LivingDamageEvent event) {
+    public static void onHurt(LivingHurtEvent event) {
+        if (event.getEntity().level().isClientSide()) {
+            return;
+        }
+
         if (!Config.enabled) {
             return;
         }
@@ -45,12 +49,14 @@ public class OnHurtListener {
 
     public static boolean isBoss(LivingEntity entity) {
         ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
-        if (id != null) {
-            if (Config.bossStrings.contains(id.toString())) {
-                return true;
-            }
+        if (id != null && Config.bossStrings.contains(id.toString())) {
+            return true;
         }
 
-        return entity.getMaxHealth() > Config.boss_hp_threshold;
+        if (Config.boss_hp_threshold != 0) {
+            return entity.getMaxHealth() >= Config.boss_hp_threshold;
+        }
+
+        return false;
     }
 }
