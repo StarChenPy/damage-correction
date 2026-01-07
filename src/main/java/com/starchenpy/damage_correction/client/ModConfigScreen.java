@@ -20,8 +20,8 @@ public class ModConfigScreen extends Screen {
     private final Minecraft client;
 
     private Checkbox enabled;
-    private Checkbox excludeBoss;
-    private Checkbox excludePlayer;
+    private Checkbox applyToBoss;
+    private Checkbox applyToPlayer;
     private Checkbox onlyPlayerDamage;
 
     private EditBox thresholdRatio;
@@ -40,19 +40,19 @@ public class ModConfigScreen extends Screen {
         int x = PADDING;
         int y = PADDING;
         int spacing = WIDGET_HEIGHT + PADDING * 2;
-        int width = 100;
+        int width = 120;
 
         // 开关区
         enabled = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("启用伤害修正"), Config.enabled);
         this.addRenderableWidget(enabled);
         y += spacing;
 
-        excludeBoss = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("不对 Boss 触发"), Config.excludeBoss);
-        this.addRenderableWidget(excludeBoss);
+        applyToBoss = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("对 Boss 触发"), Config.applyToBoss);
+        this.addRenderableWidget(applyToBoss);
         y += spacing;
 
-        excludePlayer = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("不对玩家触发"), Config.excludePlayer);
-        this.addRenderableWidget(excludePlayer);
+        applyToPlayer = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("对玩家触发"), Config.applyToPlayer);
+        this.addRenderableWidget(applyToPlayer);
         y += spacing;
 
         onlyPlayerDamage = new Checkbox(x, y, width, WIDGET_HEIGHT, Component.literal("仅能由玩家触发"), Config.onlyPlayerDamage);
@@ -121,8 +121,8 @@ public class ModConfigScreen extends Screen {
 
     private void save() {
         Config.enabled = enabled.selected();
-        Config.excludeBoss = excludeBoss.selected();
-        Config.excludePlayer = excludePlayer.selected();
+        Config.applyToBoss = applyToBoss.selected();
+        Config.applyToPlayer = applyToPlayer.selected();
         Config.onlyPlayerDamage = onlyPlayerDamage.selected();
 
         try {

@@ -22,9 +22,9 @@ public class Config {
             .comment("Damage correction threshold ratio.")
             .defineInRange("thresholdRatio", 0.5, 0, 10);
 
-    private static final ForgeConfigSpec.BooleanValue EXCLUDE_BOSS = BUILDER
+    private static final ForgeConfigSpec.BooleanValue APPLY_TO_BOSS = BUILDER
             .comment("Apply to bosses?")
-            .define("excludeBoss", true);
+            .define("applyToBoss", true);
 
     private static final ForgeConfigSpec.IntValue BOSS_HP_THRESHOLD = BUILDER
             .comment("Boss HP threshold. Entities with HP above this value are considered bosses. Works together with custom boss settings.")
@@ -34,9 +34,9 @@ public class Config {
             .comment("Custom boss entity identifiers.")
             .defineListAllowEmpty("bosses", defaultBoss, Config::validateBossName);
 
-    private static final ForgeConfigSpec.BooleanValue EXCLUDE_PLAYER = BUILDER
+    private static final ForgeConfigSpec.BooleanValue APPLY_TO_PLAYER = BUILDER
             .comment("Apply to players?")
-            .define("excludePlayer", false);
+            .define("applyToPlayer", false);
 
     private static final ForgeConfigSpec.BooleanValue ONLY_PLAYER_DAMAGE = BUILDER
             .comment("Only allow damage correction to be triggered by players?")
@@ -50,30 +50,30 @@ public class Config {
 
     public static boolean enabled;
     public static double thresholdRatio;
-    public static boolean excludeBoss;
+    public static boolean applyToBoss;
     public static int boss_hp_threshold;
     public static List<? extends String> bossStrings;
-    public static boolean excludePlayer;
+    public static boolean applyToPlayer;
     public static boolean onlyPlayerDamage;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         enabled = ENABLED.get();
         thresholdRatio = THRESHOLD_RATIO.get();
-        excludeBoss = EXCLUDE_BOSS.get();
+        applyToBoss = APPLY_TO_BOSS.get();
         boss_hp_threshold = BOSS_HP_THRESHOLD.get();
         bossStrings = BOSS_STRINGS.get();
-        excludePlayer = EXCLUDE_PLAYER.get();
+        applyToPlayer = APPLY_TO_PLAYER.get();
         onlyPlayerDamage = ONLY_PLAYER_DAMAGE.get();
     }
 
     public static void save() {
         ENABLED.set(enabled);
         THRESHOLD_RATIO.set(thresholdRatio);
-        EXCLUDE_BOSS.set(excludeBoss);
+        APPLY_TO_BOSS.set(applyToBoss);
         BOSS_HP_THRESHOLD.set(boss_hp_threshold);
         BOSS_STRINGS.set(bossStrings);
-        EXCLUDE_PLAYER.set(excludePlayer);
+        APPLY_TO_PLAYER.set(applyToPlayer);
         ONLY_PLAYER_DAMAGE.set(onlyPlayerDamage);
 
         SPEC.save();

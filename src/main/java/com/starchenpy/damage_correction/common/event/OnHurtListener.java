@@ -26,12 +26,12 @@ public class OnHurtListener {
 
         // 判定能否对玩家触发效果
         boolean targetIsPlayer = event.getEntity() instanceof Player;
-        if (!Config.excludePlayer && targetIsPlayer) {
+        if (!Config.applyToPlayer && targetIsPlayer) {
             return;
         }
 
         // 判定能否对 Boss 触发效果
-        if (!Config.excludeBoss && isBoss(event.getEntity())) {
+        if (!Config.applyToBoss && isBoss(event.getEntity())) {
             return;
         }
 
