@@ -21,7 +21,7 @@ public class StringWidget extends AbstractWidget {
     @Override
     @ParametersAreNonnullByDefault
     public void m_6305_(PoseStack p_94669_, int p_94670_, int p_94671_, float p_94672_) {
-        m_93243_(p_94669_, font, this.getMessage(), this.x + 24, this.y + (this.height - 8) / 2, 14737632 | Mth.ceil(this.alpha * 255.0F) << 24);
+        m_93243_(p_94669_, font, this.getMessage(), this.x, this.y, 14737632 | Mth.ceil(this.alpha * 255.0F) << 24);
     }
 
     public void setX(int x) {
