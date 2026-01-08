@@ -7,10 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = DamageCorrectionMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
@@ -35,7 +32,7 @@ public class Config {
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> BOSS_STRINGS = BUILDER
             .comment("Custom boss entity identifiers.")
-            .defineListAllowEmpty("bosses", defaultBoss, Config::validateBossName);
+            .defineListAllowEmpty(Collections.singletonList("bosses"), () -> defaultBoss, Config::validateBossName);
 
     private static final ForgeConfigSpec.BooleanValue APPLY_TO_PLAYER = BUILDER
             .comment("Apply to players?")

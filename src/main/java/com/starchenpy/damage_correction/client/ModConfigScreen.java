@@ -1,8 +1,8 @@
 package com.starchenpy.damage_correction.client;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.starchenpy.damage_correction.Config;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
@@ -38,7 +38,7 @@ public class ModConfigScreen extends Screen {
     protected void init() {
         int centerX = this.width / 2;
         int x = PADDING;
-        int y = PADDING * 2 + 9;;
+        int y = PADDING * 2 + 9;
         int spacing = WIDGET_HEIGHT + PADDING * 2;
         int width = 120;
 
@@ -108,21 +108,22 @@ public class ModConfigScreen extends Screen {
 
         // 底部按钮
         this.addRenderableWidget(
-                Button.builder(
+                new Button(centerX - 110,
+                        this.height - PADDING - WIDGET_HEIGHT,
+                        100,
+                        WIDGET_HEIGHT,
                         CommonComponents.GUI_CANCEL,
-                        b -> this.client.setScreen(parent)
-                ).bounds(centerX - 110, this.height - PADDING - WIDGET_HEIGHT, 100, WIDGET_HEIGHT).build()
-        );
-
+                        b -> this.client.setScreen(parent)));
         this.addRenderableWidget(
-                Button.builder(
+                new Button(centerX + 10,
+                        this.height - PADDING - WIDGET_HEIGHT,
+                        100,
+                        WIDGET_HEIGHT,
                         CommonComponents.GUI_DONE,
                         b -> {
                             save();
                             this.client.setScreen(parent);
-                        }
-                ).bounds(centerX + 10, this.height - PADDING - WIDGET_HEIGHT, 100, WIDGET_HEIGHT).build()
-        );
+                        }));
     }
 
     private void save() {
@@ -149,9 +150,9 @@ public class ModConfigScreen extends Screen {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
+    public void m_6305_(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+        this.m_7333_(poseStack);
+        super.m_6305_(poseStack, mouseX, mouseY, partialTick);
     }
 
     @Override
