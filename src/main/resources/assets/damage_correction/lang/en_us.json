@@ -1,10 +1,22 @@
 {
-  "screen.title.damage_correction.config": "Damage Correction Mod Configuration",
-  "screen.title.damage_correction.enable": "Enable",
-  "screen.title.damage_correction.apply_to_boss": "Apply to Bosses",
-  "screen.title.damage_correction.apply_to_player": "Apply to Players",
-  "screen.title.damage_correction.only_player_damage": "Triggered Only by Player Damage",
-  "screen.title.damage_correction.threshold_ratio": "Threshold Ratio",
-  "screen.title.damage_correction.boss_hp_threshold": "Boss Health Threshold (0 to Disable)",
-  "screen.title.damage_correction.boss_list": "Custom Boss List"
+  "damage_correction.configuration.enabled": "Enable Damage Correction",
+  "damage_correction.configuration.enabled.tooltip": "Enable or disable the damage correction feature.",
+
+  "damage_correction.configuration.thresholdRatio": "Threshold Ratio",
+  "damage_correction.configuration.thresholdRatio.tooltip": "The trigger threshold ratio for damage correction.",
+
+  "damage_correction.configuration.applyToPlayer": "Apply to Players",
+  "damage_correction.configuration.applyToPlayer.tooltip": "Apply damage correction to players.",
+
+  "damage_correction.configuration.onlyPlayerDamage": "Player Damage Only",
+  "damage_correction.configuration.onlyPlayerDamage.tooltip": "Only allow damage caused by players to trigger damage correction.",
+
+  "damage_correction.configuration.applyToBoss": "Apply to Bosses",
+  "damage_correction.configuration.applyToBoss.tooltip": "Apply damage correction to bosses.",
+
+  "damage_correction.configuration.bossHpThreshold": "Boss Health Threshold",
+  "damage_correction.configuration.bossHpThreshold.tooltip": "Entities with health above this value are considered bosses. This feature is disabled when the value is 0. Can be used together with custom boss settings.",
+
+  "damage_correction.configuration.bossList": "Custom Boss List",
+  "damage_correction.configuration.bossList.tooltip": "Custom boss entity identifiers."
 }

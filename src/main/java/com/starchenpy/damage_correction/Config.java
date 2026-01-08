@@ -20,18 +20,6 @@ public class Config {
             .comment("Damage correction threshold ratio.")
             .defineInRange("thresholdRatio", 0.5, 0, 10);
 
-    public static final ModConfigSpec.BooleanValue APPLY_TO_BOSS = BUILDER
-            .comment("Apply to bosses?")
-            .define("applyToBoss", true);
-
-    public static final ModConfigSpec.IntValue BOSS_HP_THRESHOLD = BUILDER
-            .comment("Boss HP threshold. Entities with HP above this value are considered bosses. Works together with custom boss settings.")
-            .defineInRange("boss_hp_threshold", 200, 0, Integer.MAX_VALUE);
-
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> BOSS_STRINGS = BUILDER
-            .comment("Custom boss entity identifiers.")
-            .defineListAllowEmpty("bosses", new ArrayList<>(defaultBoss), Config::validateBossName);
-
     public static final ModConfigSpec.BooleanValue APPLY_TO_PLAYER = BUILDER
             .comment("Apply to players?")
             .define("applyToPlayer", false);
@@ -40,9 +28,21 @@ public class Config {
             .comment("Only allow damage correction to be triggered by players?")
             .define("onlyPlayerDamage", true);
 
+    public static final ModConfigSpec.BooleanValue APPLY_TO_BOSS = BUILDER
+            .comment("Apply to bosses?")
+            .define("applyToBoss", true);
+
+    public static final ModConfigSpec.IntValue BOSS_HP_THRESHOLD = BUILDER
+            .comment("Boss HP threshold. Entities with HP above this value are considered bosses. This feature is disabled when the value is zero. Works together with custom boss settings.")
+            .defineInRange("bossHpThreshold", 200, 0, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> BOSS_STRINGS = BUILDER
+            .comment("Custom boss entity identifiers.")
+            .defineList("bossList", new ArrayList<>(defaultBoss), () -> "", Config::validateBossName);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private static boolean validateBossName(final Object obj) {
-        return obj instanceof final String bossName && BuiltInRegistries.ENTITY_TYPE.containsKey(new ResourceLocation(bossName));
+        return obj instanceof final String bossName && BuiltInRegistries.ENTITY_TYPE.containsKey(ResourceLocation.parse(bossName));
     }
 }

@@ -1,10 +1,22 @@
 {
-  "screen.title.damage_correction.config": "ダメージ補正 Mod 設定画面",
-  "screen.title.damage_correction.enable": "ダメージ補正を有効化",
-  "screen.title.damage_correction.apply_to_boss": "ボスに適用",
-  "screen.title.damage_correction.apply_to_player": "プレイヤーに適用",
-  "screen.title.damage_correction.only_player_damage": "プレイヤーの攻撃のみ有効",
-  "screen.title.damage_correction.threshold_ratio": "しきい値の比率",
-  "screen.title.damage_correction.boss_hp_threshold": "ボスの体力しきい値（0 で無効）",
-  "screen.title.damage_correction.boss_list": "カスタムボス一覧"
+  "damage_correction.configuration.enabled": "ダメージ補正を有効化",
+  "damage_correction.configuration.enabled.tooltip": "ダメージ補正機能を有効または無効にします。",
+
+  "damage_correction.configuration.thresholdRatio": "しきい値比率",
+  "damage_correction.configuration.thresholdRatio.tooltip": "ダメージ補正が発動するしきい値の比率です。",
+
+  "damage_correction.configuration.applyToPlayer": "プレイヤーに適用",
+  "damage_correction.configuration.applyToPlayer.tooltip": "プレイヤーにダメージ補正を適用します。",
+
+  "damage_correction.configuration.onlyPlayerDamage": "プレイヤーによるダメージのみ",
+  "damage_correction.configuration.onlyPlayerDamage.tooltip": "プレイヤーが与えたダメージのみでダメージ補正が発動します。",
+
+  "damage_correction.configuration.applyToBoss": "ボスに適用",
+  "damage_correction.configuration.applyToBoss.tooltip": "ボスにダメージ補正を適用します。",
+
+  "damage_correction.configuration.bossHpThreshold": "ボスの体力しきい値",
+  "damage_correction.configuration.bossHpThreshold.tooltip": "体力がこの値を超えるエンティティはボスとして扱われます。値が 0 の場合、この機能は無効になります。カスタムボス設定と併用できます。",
+
+  "damage_correction.configuration.bossList": "カスタムボスリスト",
+  "damage_correction.configuration.bossList.tooltip": "カスタムボスのエンティティ識別子です。"
 }

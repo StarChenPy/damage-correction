@@ -1,10 +1,22 @@
 {
-  "screen.title.damage_correction.config": "傷害修正 Mod 設定頁面",
-  "screen.title.damage_correction.enable": "啟用傷害修正",
-  "screen.title.damage_correction.apply_to_boss": "對 Boss 觸發",
-  "screen.title.damage_correction.apply_to_player": "對玩家觸發",
-  "screen.title.damage_correction.only_player_damage": "僅能由玩家觸發",
-  "screen.title.damage_correction.threshold_ratio": "閾值比例",
-  "screen.title.damage_correction.boss_hp_threshold": "Boss 血量閾值（0 時關閉）",
-  "screen.title.damage_correction.boss_list": "自訂 Boss 清單"
+  "damage_correction.configuration.enabled": "啟用傷害修正",
+  "damage_correction.configuration.enabled.tooltip": "啟用或停用傷害修正功能。",
+
+  "damage_correction.configuration.thresholdRatio": "閾值比例",
+  "damage_correction.configuration.thresholdRatio.tooltip": "傷害修正的觸發閾值比例。",
+
+  "damage_correction.configuration.applyToPlayer": "對玩家生效",
+  "damage_correction.configuration.applyToPlayer.tooltip": "對玩家套用傷害修正。",
+
+  "damage_correction.configuration.onlyPlayerDamage": "僅由玩家傷害觸發",
+  "damage_correction.configuration.onlyPlayerDamage.tooltip": "只允許由玩家造成的傷害觸發傷害修正。",
+
+  "damage_correction.configuration.applyToBoss": "對 Boss 生效",
+  "damage_correction.configuration.applyToBoss.tooltip": "對 Boss 套用傷害修正。",
+
+  "damage_correction.configuration.bossHpThreshold": "Boss 血量閾值",
+  "damage_correction.configuration.bossHpThreshold.tooltip": "生命值高於此數值的實體將被視為 Boss。當數值為 0 時，此功能將被停用。可與自訂 Boss 設定一同使用。",
+
+  "damage_correction.configuration.bossList": "自訂 Boss 清單",
+  "damage_correction.configuration.bossList.tooltip": "自訂 Boss 的實體識別碼。"
 }
