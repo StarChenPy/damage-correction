@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class Config {
@@ -43,6 +43,6 @@ public class Config {
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private static boolean validateBossName(final Object obj) {
-        return obj instanceof final String bossName && BuiltInRegistries.ENTITY_TYPE.containsKey(ResourceLocation.parse(bossName));
+        return obj instanceof final String bossName && BuiltInRegistries.ENTITY_TYPE.containsKey(Identifier.parse(bossName));
     }
 }

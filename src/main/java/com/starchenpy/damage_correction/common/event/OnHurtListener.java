@@ -2,7 +2,7 @@ package com.starchenpy.damage_correction.common.event;
 
 import com.starchenpy.damage_correction.Config;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -49,7 +49,7 @@ public class OnHurtListener {
     }
 
     public static boolean isBoss(LivingEntity entity) {
-        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+        Identifier id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
         if (Config.BOSS_STRINGS.get().contains(id.toString())) {
             return true;
         }
